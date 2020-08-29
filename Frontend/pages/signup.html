@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Groupomania - inscription</title>
+    	<meta name="description" content="Réseau social d'entreprise Groupomania - inscription">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    	<link rel="shortcut icon" type="image/png" href="../images/favicon.png">
+        <link rel="stylesheet" type="text/css" href="../styles/style.css">
+        <script src="../javascript/commun.js" defer></script>
+        <script src="../javascript/signup.js" defer></script>
+    </head>
+    <body class="auth">
+		<header class="auth__header">
+            <img class="auth__header__logo" src="../images/logo.png" alt="logo de Groupomania">
+            <h1 class="auth__header__title">Le réseau social d'entreprise</h1>      
+        </header>
+        <section class="auth__content">
+            <h2 class="auth__content__title">Inscription</h2>
+            <form class="auth__content__log">
+                <p class="auth__content__log__error"></p>
+                <div class="auth__content__log__name form-properties">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" placeholder="Votre nom">
+                </div>
+                <div class="auth__content__log__firstname form-properties">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" placeholder="Votre prénom">
+                </div>
+                <div class="auth__content__log__email form-properties">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Votre email">
+                </div>
+                <div class="auth__content__log__password form-properties">
+                    <label for="motDePasse">Mot de passe</label>
+                    <div>
+                        <input type="password" id="motDePasse" placeholder="Votre mot de passe">
+                        <input type="password" id="confirmMotDePasse" placeholder="Confirmez mot de passe">
+                    </div>  
+                </div>
+                <div class="form-properties">
+                    <button id="signup">Envoyer</button>
+                    <a href="../index.html">Vous avez un compte?</a>
+                </div>
+            </form>
+        </section>
+    </body>
+</html>

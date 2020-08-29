@@ -1,0 +1,298 @@
+body {
+  padding: 0;
+  margin: auto;
+  background-image: url("../images/background.jpg");
+}
+
+.error {
+  font-size: 1em;
+  color: red;
+}
+
+button {
+  border: 2px solid white;
+  border-radius: 4px;
+  font-size: 1em;
+  margin: 10px;
+  width: 120px;
+}
+
+.form-properties {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.form-properties label {
+  font-size: 1.1em;
+}
+.form-properties input, .form-properties select {
+  background-color: white;
+  border: 2px solid #091f43;
+  border-radius: 4px;
+  height: 25px;
+}
+.form-properties textarea {
+  background-color: rgba(174, 174, 174, 0.5);
+  border: 2px solid #091f43;
+  border-radius: 4px;
+  width: 70%;
+  height: 30vh;
+}
+.form-properties > a {
+  text-decoration: none;
+  color: bisque;
+}
+
+.fileform-properties {
+  padding: 10px;
+}
+.fileform-properties > input {
+  background-color: rgba(174, 174, 174, 0.5);
+  border: 2px solid #091f43;
+  border-radius: 4px;
+}
+
+.groupomania__header {
+  background-color: rgba(19, 38, 67, 0.7);
+}
+.groupomania__header__logo {
+  margin: auto;
+  width: 360px;
+}
+.groupomania__header__logo__img {
+  width: 90%;
+}
+.groupomania__header__logo__title {
+  padding: 5px 0 20px 0;
+  margin: 0;
+  font-size: 1.8em;
+  font-style: italic;
+  font-weight: 100;
+  color: white;
+}
+
+@media only screen and (max-width: 700px) {
+  .groupomania__header__logo {
+    width: 340px;
+  }
+}
+.groupomania__footer {
+  border-top: 2px solid white;
+  border-radius: 8px;
+  background-color: rgba(19, 38, 67, 0.7);
+  bottom: 0;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.groupomania__footer__link {
+  padding: 10px 5px 5px 5px;
+  text-decoration: none;
+  color: white;
+}
+.groupomania__footer__logo {
+  width: 200px;
+}
+
+@media only screen and (max-width: 700px) {
+  .groupomania__footer {
+    font-size: 1.3em;
+    padding: 0;
+    margin: 0;
+  }
+  .groupomania__footer__logo {
+    width: 150px;
+  }
+}
+@media only screen and (min-width: 701px) {
+  .groupomania__footer {
+    font-size: 1.35em;
+  }
+}
+.groupomania__nav {
+  background: rgba(209, 81, 90, 0.7);
+  border-bottom: 2px solid white;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.groupomania__nav__menu {
+  font-size: 1.2em;
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.groupomania__nav__menu > li {
+  display: flex;
+  padding: 20px;
+}
+.groupomania__nav__menu > li:hover a {
+  transform: scale(1, 1.4);
+}
+.groupomania__nav__menu > li > a {
+  text-decoration: none;
+  color: white;
+  transition: transform 0.3s 0s cubic-bezier(0.26, -1.57, 0.21, 1.84);
+}
+.groupomania__nav__menu__logo {
+  width: 20px;
+  height: auto;
+  margin-right: 10px;
+}
+
+@media only screen and (min-width: 391px) and (max-width: 700px) {
+  .groupomania__nav__menu {
+    flex-wrap: wrap;
+  }
+  .groupomania__nav__menu > li {
+    width: 45%;
+    padding: 10px;
+  }
+}
+@media only screen and (max-width: 390px) {
+  .groupomania__nav__menu {
+    flex-wrap: wrap;
+  }
+  .groupomania__nav__menu > li {
+    padding: 10px;
+    width: 100%;
+  }
+}
+.auth {
+  width: 360px;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-top: 20vh;
+}
+.auth__header {
+  background-color: rgba(18, 36, 66, 0.6);
+  text-align: center;
+  color: white;
+}
+.auth__header__logo {
+  width: 90%;
+  padding: 0 10px;
+}
+.auth__header__title {
+  margin: 0;
+  padding-bottom: 20px;
+  font-size: 1.8em;
+  font-style: italic;
+}
+.auth__content {
+  background-color: rgba(18, 36, 66, 0.6);
+  color: #bac0c8;
+}
+.auth__content__title {
+  border-bottom: 4px solid #d1515a;
+  padding: 20px 0 10px 0;
+  margin: 0;
+  text-align: center;
+}
+.auth__content__log {
+  padding: 15px 15px;
+}
+.auth__content__log__error {
+  color: red;
+}
+.auth__content__log__password {
+  margin-bottom: 30px;
+}
+.auth__content__log__password > div {
+  display: flex;
+  flex-direction: column;
+}
+.auth__content__log__password > div input {
+  margin-bottom: 5px;
+}
+
+.groupomania > main {
+  display: flex;
+  margin-bottom: 3em;
+}
+.groupomania__tools {
+  width: 320px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border-bottom: 2px solid white;
+  background-color: rgba(18, 37, 66, 0.7);
+  color: white;
+}
+.groupomania__tools--create {
+  height: 300px;
+}
+.groupomania__tools--consult {
+  height: 690px;
+}
+.groupomania__tools--oneForum {
+  height: 590px;
+}
+.groupomania__tools__title {
+  size: 1.2em;
+  text-align: center;
+  border-bottom: 2px solid #d1515a;
+  color: white;
+}
+.groupomania__tools__userInfos {
+  display: flex;
+  flex-direction: column;
+}
+.groupomania__tools__userInfos__img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 10px 0;
+}
+.groupomania__tools__userInfos__img > img {
+  width: 150px;
+  height: auto;
+}
+.groupomania__tools__userInfos__infos {
+  text-align: left;
+  padding: 10px 0 10px 10px;
+  margin: 0;
+}
+.groupomania__tools__userInfos__infos > li {
+  list-style: none;
+}
+.groupomania__tools__search__form div:nth-last-of-type(6) {
+  padding-bottom: 10px;
+}
+.groupomania__tools__search__form__choices > select {
+  width: 140px;
+}
+.groupomania__tools__search__form__choices > input {
+  width: 133px;
+}
+.groupomania__views {
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+  border-bottom: 2px solid white;
+  border-radius: 8px;
+  background-color: rgba(174, 174, 174, 0.7);
+  color: #091f43;
+}
+.groupomania__views__title {
+  size: 1.2em;
+  text-align: left;
+  border-bottom: 2px solid #d1515a;
+  color: #091f43;
+}
+
+@media only screen and (min-width: 360px) and (max-width: 750px) {
+  .groupomania > main {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+  }
+  .groupomania__views {
+    width: 94%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

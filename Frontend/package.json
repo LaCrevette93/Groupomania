@@ -1,0 +1,14 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Frontend SO PECOCKO",
+  "main": "index.html",
+  "scripts": {
+    "sass": "sass --watch ./styles/main.scss:./styles/style.css"
+  },
+  "author": "Gaetan LAUBRON",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.26.10"
+  }
+}

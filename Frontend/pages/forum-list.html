@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Groupomania - forum</title>
+    	<meta name="description" content="Liste des forum du réseau social d'entreprise Groupomania">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    	<link rel="shortcut icon" type="image/png" href="../images/favicon.png">
+        <link rel="stylesheet" type="text/css" href="../styles/style.css">
+        <script src="../javascript/commun.js" defer></script>
+        <script src="../javascript/forum-list.js" defer></script>
+    </head>
+    <body class="groupomania">
+		<header class="groupomania__header">
+            <div class="groupomania__header__logo"> 
+                <img class="groupomania__header__logo__img" src="../images/logo.png" alt="logo de Groupomania">
+                <h1 class="groupomania__header__logo__title">Le réseau social d'entreprise</h1>      
+            </div>
+        </header>
+        <nav class="groupomania__nav">
+             <ul class="groupomania__nav__menu">
+                 <li><img class="groupomania__nav__menu__logo" src="../images/accountIcon.png" alt="icon du compte utilisateur">Mon compte</li>
+                 <li><a href ="forum-list.html"><img class="groupomania__nav__menu__logo" src="../images/forumIcon.png" alt="icon forumr">Forum</a></li>
+                 <li><a href ="forum-create.html"><img class="groupomania__nav__menu__logo" src="../images/createForumIcon.png" alt="icon créer forum">Créer un forum</a></li>
+                 <li id="admin"><a href ="admin.html"><img class="groupomania__nav__menu__logo" src="../images/administrativeIcon.png" alt="icon modérateur">Administration</a></li>
+            </ul>   
+        </nav>
+        <main>
+            <aside class="groupomania__tools groupomania__tools--consult"> 
+                <section class="groupomania__tools__userInfos">
+                    <header class="groupomania__tools__title">
+                        <h2>Mon activité</h2>
+                    </header>
+                    <div class="groupomania__tools__userInfos__img">
+                        <img id="imageUrl" alt="icone photo utilisateur"/>
+                        <span class="groupomania__tools__userInfos__author"></span>
+                    </div>
+                    <ul class="groupomania__tools__userInfos__infos">
+                        <li class="groupomania__tools__userInfos__infos--posts"></li>
+                        <li class="groupomania__tools__userInfos__infos--comments"></li>
+                        <li class="groupomania__tools__userInfos__infos--popularity"></li>
+                    </ul>
+                    <button id="logoff">Déconnexion</button>
+                </section>
+                <section class="groupomania__tools__search">
+                    <header class="groupomania__tools__title">
+                        <h2>Recherche</h2>
+                    </header>
+                    <form class="groupomania__tools__search__form">
+                        <p class="groupomania__tools__search__form__error"></p>
+                        <div class="groupomania__tools__search__form__choices form-properties">
+                            <label for="type">Type de contenu</label>
+                            <select name="type" id="type">
+                                <option value="">Choisissez</option>
+                                <option value="Texte">Texte</option>
+                                <option value="Image">Image</option>
+                                <option value="Vidéo">Video</option>
+                            </select>
+                        </div>
+                        <div class="groupomania__tools__search__form__choices form-properties">
+                            <label for="theme">Thématique</label>
+                            <select name="theme" id="theme">
+                                <option value="">Choisissez</option>
+                                <option value="Animaux">Animaux</option>
+                                <option value="Formation">Formation</option>
+                                <option value="Emploi">Emploi</option>
+                                <option value="Economie">Economie</option>
+                                <option value="Evenements">Evenements</option>
+                                <option value="Immobilier">Immobilier</option>
+                                <option value="Services">Services</option>
+                                <option value="Rencontres">Rencontres</option>
+                                <option value="Loisirs">Loisirs</option>
+                                <option value="Environnement">Environnement</option>
+                                <option value="Politique">Politique</option>
+                                <option value="Actualité">Actualité</option>
+                            </select>
+                        </div>
+                        <div class="groupomania__tools__search__form__choices form-properties">
+                            <label for="auteur">Auteur</label>
+                            <input id="auteur" name="auteur" placeholder="nom d'un auteur"/>
+                        </div>
+                        <div class="groupomania__tools__search__form__choices form-properties">
+                            <label for="title">Titre</label>
+                            <input id="title" name="title" placeholder="mots clés titre"/>
+                        </div>
+                        <div class="groupomania__tools__search__form__choices form-properties">
+                            <button id="submitSearch">Rechercher</button>
+                            <button id="submitSearchCancel">Rétablir</button>
+                        </div>
+                    </form>
+                </section>
+            </aside>
+            <section class="groupomania__views">
+                <header class="groupomania__views__title">
+                    <h2>Les publications</h2>
+                </header>
+                <section class="groupomania__views__content">
+                    <header class="groupomania__views__content__header">
+                        <h3>Les publications demandées</h3>
+                    </header>
+                    <p class="groupomania__views__content__error"></p>
+                    <div class="groupomania__views__content__list">
+
+                    </div>
+                </section>
+            </section>
+        </main>
+        <footer class="groupomania__footer">
+            <div>
+                <a class="groupomania__footer__link" href="mentions-legales.html">Mentions légales</a>
+                <a class="groupomania__footer__link" href="mailto:emploilaubron@hotmail.com">Contactez-nous</a>
+            </div>
+            <img class="groupomania__footer__logo" src="../images/logo.png" alt="logo de Groupomania">
+        </footer>
+    </body>
+</html>

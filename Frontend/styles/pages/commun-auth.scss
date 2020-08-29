@@ -1,0 +1,48 @@
+.auth {
+    width: 360px;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-top: 20vh;
+    &__header {
+        background-color: rgba(18,36,66,0.6);
+        text-align: center;
+        color: white;
+        &__logo {
+            width: 90%;
+            padding: 0 10px;
+        }
+        &__title {
+            margin: 0;
+            padding-bottom: 20px;
+            font-size: 1.8em;
+            font-style: italic;
+        }
+    }
+    &__content {
+        background-color: rgba(18,36,66,0.6);
+        color: rgb(186,192,200);
+        &__title {
+            border-bottom: 4px solid rgb(209,81,90);
+            padding: 20px 0 10px 0;
+            margin: 0;
+            text-align: center;
+        }
+        &__log {
+            padding: 15px 15px;
+            &__error {
+                color: red;
+            }
+            &__password {
+                margin-bottom: 30px;
+                & > div {
+                    display: flex;
+                    flex-direction: column;
+                    & input {
+                        margin-bottom: 05px;
+                    }
+                }
+            }
+        }
+    }
+}
+

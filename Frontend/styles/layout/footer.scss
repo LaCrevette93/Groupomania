@@ -1,0 +1,42 @@
+.groupomania {
+    &__footer {
+        border-top: 2px solid white;
+        border-radius: 8px;
+        background-color: rgba(19,38,67,0.7);
+        bottom: 0;
+        width: 100%;
+        position: fixed;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__link {
+            padding: 10px 5px 5px 5px;
+            text-decoration: none;
+            color: white;
+        }
+        &__logo {
+            width: 200px;
+        }
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .groupomania {
+        &__footer {
+            font-size: 1.3em;
+            padding: 0;
+            margin: 0;
+            &__logo {
+                width: 150px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 701px) {
+    .groupomania {
+        &__footer {
+            font-size: 1.35em;
+        }
+    }
+}
