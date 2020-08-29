@@ -54,6 +54,7 @@ exports.login = (req,res,next) => {
                 }
                 return res.status(200).json({
                     role: search[0].role,
+                    userId: search[0].id,
                     token: token.sign(
                         { userId: search[0].id },
                         'RANDOM_TOKEN_SECRET',
@@ -69,3 +70,26 @@ exports.login = (req,res,next) => {
     });
 };       
 
+                //Controller for recover one user according to the userId passed in parameters CRUD (read user)
+exports.oneUser = (req, res, next) => {
+    connection.query('SELECT * FROM user WHERE id = '+ (req.params.id).split(":")[1], function (err, result)  {
+        if(err) {
+            res.status(500).json('Une erreur est survenue sur la BDD: ' + err);
+        } else {
+            if(result.length > 0 ) {
+                let author = base64decode(result[0].nom) + " " + base64decode(result[0].prenom);
+                let userInfos = {
+                    nb_publications: result[0].nb_publications,
+                    nb_commentaires: result[0].nb_commentaires,
+                    popularity: result[0].popularité,
+                    author: author,
+                    profil_path: result[0].imageUrl
+                }
+                return res.status(200).json(userInfos);
+            }
+            else {
+                return res.status(404).json('ressource manquante!');
+            }
+        }
+    });
+};

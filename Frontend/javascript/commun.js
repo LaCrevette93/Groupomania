@@ -100,3 +100,47 @@ function controlForm(page,dataObject) {
     }
     return bool;
 }
+
+            //Function to generate a list of forums saved in the database
+function addBlocsViews(responseRequest) {   
+    if (responseRequest == 'Aucun forum dans la base de données!') {
+        errorView[0].innerHTML = responseRequest;
+    } else {
+        for (let i = 0; i < responseRequest.length; i++) 
+        {
+            let blockRacine = ["groupomania__views__content__list","a","groupomania__views__content__list__article-link"];
+            let addBlocs = ["groupomania__views__content__list__article-link","article","article"];                    
+            createObject(blockRacine[0],blockRacine[1],blockRacine[2],null,0);
+            generateLinkForum(blockRacine[2],i,responseRequest);
+            createObject(addBlocs[0],addBlocs[1],addBlocs[2],null,i); 
+            let addContent = [
+                ["article","header","article__header","<h4>"+responseRequest[i].theme+"</h4>"],
+                ["article","section","article__content","<p>"+responseRequest[i].title+"</p><p>"+responseRequest[i].description+"</p>"],
+                ["article","footer","article__footer","<p>"+responseRequest[i].author+"</br>"+responseRequest[i].date+"</p>"]
+            ]; 
+            for (let j in addContent) 
+            {
+                createObject(addContent[j][0],addContent[j][1],addContent[j][2],addContent[j][3],i);
+            }
+        }
+    }
+    var element = document.getElementsByClassName("article");
+    for (let i = 0; i < element.length; i++) {
+        element[i].setAttribute("style", "background-image: url(\""+responseRequest[i].background+"\"");
+    }
+}  
+
+            //Function to generate link for each forum in forum-list page
+function generateLinkForum(target,level,data) {                                               
+    let blockListForum = document.getElementsByClassName(target);                             
+    blockListForum[level].setAttribute("href","./forum-view.html?id="+data[level].id);
+}
+
+            //Function to logout user when click "Deconnexion" button
+function clickToLogout() {
+    logout = document.getElementById("logoff");
+    logout.addEventListener("click", function(event) {
+        event.preventDefault();
+        document.location.href = "../index.html";
+    });
+}
