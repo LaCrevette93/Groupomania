@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "1.0.0",
-  "description": "Frontend SO PECOCKO",
+  "description": "Frontend Groupomania",
   "main": "index.html",
   "scripts": {
     "sass": "sass --watch ./styles/main.scss:./styles/style.css"
