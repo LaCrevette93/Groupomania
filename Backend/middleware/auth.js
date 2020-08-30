@@ -13,6 +13,6 @@ module.exports = (req,res,next) => {
             next();
         }
     } catch {
-        res.status(401).json('Veuillez-vous reconnecter!');
+        res.status(401).json('Token expiré! Veuillez-vous reconnecter!');
     }
 }

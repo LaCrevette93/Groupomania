@@ -12,9 +12,12 @@ sendRequest("GET", "http://localhost:3000/api/forum/:"+param, null)
     addUserInfos(dataForum);
     addInfoForum(dataForum);
     controlView(dataForum);
+    controlViewLikes(dataForum);
     clickToDeleteForum(param);
     clickToValidate(param);
     clickToModifyForum(param);
+    clickToLikeForum(dataForum,param);
+    clickToDislikeForum(dataForum,param);
     ClickToForumList();
     sendRequest("GET", "http://localhost:3000/api/comment/:"+param, null)
     .then(dataComments => {
@@ -154,6 +157,24 @@ function controlView(responseRequest) {
     }
 }
 
+                    //Function to control likes for the current forum
+function controlViewLikes(responseRequest) {
+    let positif = document.getElementsByClassName("fa-thumbs-up");
+    let negatif = document.getElementsByClassName("fa-thumbs-down");
+    if(((responseRequest.likesForum).indexOf(JSON.parse(tempoData.getItem("user")).userId)) != -1) {
+        positif[0].style.color = "green";
+    }
+    else {
+        positif[0].style.color = "white";
+    }
+    if(((responseRequest.dislikesForum).indexOf(JSON.parse(tempoData.getItem("user")).userId)) != -1) {
+        negatif[0].style.color = "red";
+    }
+    else {
+        negatif[0].style.color = "white";
+    }
+}
+
                     //Function to delete the current forum
 function clickToDeleteForum(forumId) {
     document.getElementById("delete").addEventListener("click", function(event) {
@@ -188,4 +209,51 @@ function clickToModifyForum(modifyId) {
         event.preventDefault();
         document.location.href = "forum-modify.html?id="+modifyId;
     });
+}
+
+                    //Function to add a like
+function clickToLikeForum(responseRequest,forumId) {
+    let action = 1;
+    let elt = document.getElementsByClassName("fa-thumbs-up");
+    elt[0].addEventListener("click", function(event) {
+        event.preventDefault();
+        if(((responseRequest.dislikesForum).indexOf(JSON.parse(tempoData.getItem("user")).userId)) == -1) {
+            if(((responseRequest.likesForum).indexOf(JSON.parse(tempoData.getItem("user")).userId)) != -1) {
+                action = 0;
+            }
+            addRemoveLikes(action,forumId);
+        }
+    })
+}
+
+                    //Function to add a dislike
+function clickToDislikeForum(responseRequest,forumId) {
+    let action = -1;
+    let elt = document.getElementsByClassName("fa-thumbs-down");
+    elt[0].addEventListener("click", function(event) {
+        event.preventDefault();
+        if(((responseRequest.likesForum).indexOf(JSON.parse(tempoData.getItem("user")).userId)) == -1) {
+            if(((responseRequest.dislikesForum).indexOf(JSON.parse(tempoData.getItem("user")).userId)) != -1) {
+                action = 0;
+            }
+            addRemoveLikes(action,forumId);
+        }
+    })
+}
+
+                    //Function to add a reaction for the current forum
+function addRemoveLikes(action,forumId) {
+    let like = {
+        type: action,
+        publication_id: forumId,
+        user_id: JSON.parse(tempoData.getItem("user")).userId
+    }
+    dataRequest = JSON.stringify(like);
+    sendRequest("POST", "http://localhost:3000/api/like/:"+ forumId,dataRequest)
+    .then(dataLikes => {
+        location.reload();
+    })
+    .catch(errorLikes => {
+        errorView[0].innerHTML = errorLikes;
+    })
 }

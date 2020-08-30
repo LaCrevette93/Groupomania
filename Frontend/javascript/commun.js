@@ -141,6 +141,7 @@ function clickToLogout() {
     logout = document.getElementById("logoff");
     logout.addEventListener("click", function(event) {
         event.preventDefault();
+        tempoData.clear();
         document.location.href = "../index.html";
     });
 }
