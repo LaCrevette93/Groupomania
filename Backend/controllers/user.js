@@ -55,6 +55,8 @@ exports.login = (req,res,next) => {
                 return res.status(200).json({
                     role: search[0].role,
                     userId: search[0].id,
+                    firstname: base64decode(search[0].prenom),
+                    lastname: base64decode(search[0].nom),
                     token: token.sign(
                         { userId: search[0].id },
                         'RANDOM_TOKEN_SECRET',

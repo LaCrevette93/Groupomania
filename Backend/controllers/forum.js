@@ -58,3 +58,43 @@ exports.allSearch = (req,res,next) => {
         }
     });
 };
+
+                //Controller for display pne forum selected by user in forum-list page CRUD (read forum)
+exports.oneForum = (req, res, next) => {
+    connection.query('SELECT * FROM publication INNER JOIN user ON publication.nom_id = user.id WHERE publication.id = '+ (req.params.id).split(":")[1], function (err, result)  {
+        if(err) {
+            res.status(500).json('Une erreur est survenue sur la BDD: ' + err);
+        } else {
+            if(result.length > 0 ) {
+                connection.query('SELECT * FROM commentaire WHERE publication_id = '+ (req.params.id).split(":")[1], function (errComments, resultComments)  {
+                    if(errComments) {
+                        res.status(500).json('Une erreur est survenue sur la BDD: ' + errComments);
+                    } else {
+                        forum = {
+                            userId: result[0].nom_id,
+                            theme: result[0].thematique,
+                            title: result[0].titre,
+                            type:result[0].type,
+                            description: result[0].description,
+                            author: base64decode(result[0].nom) + " " + base64decode(result[0].prenom),
+                            pathMedia: result[0].media_path,
+                            profilPath: result[0].imageUrl,
+                            likesForum: result[0].userId_positif_reaction,
+                            nb_likes_forum: result[0].nb_positif_reaction,
+                            dislikesForum: result[0].userId_negatif_reaction,
+                            nb_dislikes_forum: result[0].nb_negatif_reaction,
+                            nb_publications: result[0].nb_publications,
+                            nb_comments: result[0].nb_commentaires,
+                            nb_commentsForum: resultComments.length,
+                            popularity: result[0].popularité
+                        }
+                        return res.status(200).json(forum);
+                    }
+                });
+            }
+            else {
+                return res.status(404).json('Une ressource est manquante!');
+            }
+        }
+    });
+};

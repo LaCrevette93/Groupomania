@@ -5,6 +5,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/user');
 const forumRoutes = require('./routes/forum');
+const commentRoutes = require('./routes/comment');
 const path = require('path');
 
 app.use((req, res, next) => {
@@ -18,6 +19,7 @@ app.use(bodyParser.json({ limit: '5000mb' }))
 
 app.use('/api/auth', userRoutes);
 app.use('/api/forum', forumRoutes);
+app.use('/api/comment', commentRoutes);
 app.use('/medias', express.static(path.join(__dirname, 'medias')));
 
 module.exports = app;

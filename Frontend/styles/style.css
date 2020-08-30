@@ -17,6 +17,21 @@ button {
   width: 120px;
 }
 
+#modify {
+  color: white;
+  background-color: #122642;
+}
+
+#delete {
+  color: white;
+  background-color: #d77d83;
+}
+
+#Validate {
+  color: white;
+  background-color: #036b4f;
+}
+
 .form-properties {
   display: flex;
   justify-content: space-between;
@@ -385,6 +400,88 @@ button {
 @media only screen and (min-width: 360px) and (max-width: 650px) {
   .groupomania__views__content__list__article-link {
     width: 940%;
+  }
+}
+.groupomania__tools__userInfos__reactions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid white;
+  margin: 0;
+  padding: 0;
+}
+.groupomania__tools__userInfos__reactions > li {
+  list-style: none;
+  padding: 10px;
+}
+.groupomania__tools__userInfos__reactions > li > i {
+  padding: 10px;
+}
+.groupomania__tools__userInfos__actionsButton {
+  display: flex;
+}
+.groupomania__views__comments__list__content {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(174, 174, 174, 0.5);
+  border: 2px solid #091f43;
+  border-radius: 4px;
+}
+.groupomania__views__comments__list__content div {
+  display: flex;
+  align-items: left;
+  padding: 0 20px;
+}
+.groupomania__views__comments__list__content div > p {
+  font-size: 1em;
+  margin: 0;
+  color: white;
+  padding: 5px 0;
+}
+.groupomania__views__comments__form {
+  display: flex;
+  align-items: left;
+  justify-content: space-between;
+  width: 90%;
+}
+.groupomania__views__comments__form > textarea {
+  height: 20px;
+}
+
+.content {
+  padding: 10px;
+}
+.content h3 {
+  text-align: center;
+  font-size: 1.5em;
+  color: grey;
+}
+.content h3 + p {
+  text-align: justify;
+  font-size: 1.2em;
+}
+
+.media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.media > video, .media > img {
+  width: 50%;
+  height: auto;
+  box-shadow: 0px 0px 13px 4px #f1f1f1;
+  border-bottom: 2px solid white;
+  border-radius: 8px;
+}
+
+@media only screen and (min-width: 651px) {
+  .media > video, .media > img {
+    width: 30%;
+  }
+}
+@media only screen and (min-width: 360px) and (max-width: 650px) {
+  .media > video, .media > img {
+    width: 80%;
   }
 }
 

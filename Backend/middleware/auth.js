@@ -1,3 +1,5 @@
+
+                    //Middleware to authenticate the user's request
 const token = require('jsonwebtoken');
 
 module.exports = (req,res,next) => {

@@ -144,3 +144,19 @@ function clickToLogout() {
         document.location.href = "../index.html";
     });
 }
+
+            //Function to control user session data
+function controlSession() {
+    var timer = setInterval(function () {
+        if (!sessionStorage.getItem("user")) {
+            document.location.href = "http://127.0.0.1:8080/index.html";
+        }
+    }, 1000);
+}
+
+            //Function to control user admin access
+function accesAdmin() {
+    if((JSON.parse(tempoData.getItem("user")).role) == "user") {
+        document.getElementById("admin").innerHTML = "";
+    }
+}

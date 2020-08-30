@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Groupomania - forum consultation</title>
+    	<meta name="description" content="Consultation d'un forum du réseau social d'entreprise Groupomania">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    	<link rel="shortcut icon" type="image/png" href="../images/favicon.png">
+        <link rel="stylesheet" type="text/css" href="../styles/style.css">
+        <script src="https://kit.fontawesome.com/7c475d1e01.js" crossorigin="anonymous"></script>
+        <script src="../javascript/commun.js" defer></script>
+        <script src="../javascript/forum-view.js" defer></script>
+    </head>
+    <body class="groupomania">
+		<header class="groupomania__header">
+            <div class="groupomania__header__logo"> 
+                <img class="groupomania__header__logo__img" src="../images/logo.png" alt="logo de Groupomania">
+                <h1 class="groupomania__header__logo__title">Le réseau social d'entreprise</h1>      
+            </div>
+        </header>
+        <nav class="groupomania__nav">
+             <ul class="groupomania__nav__menu">
+                <li><img class="groupomania__nav__menu__logo" src="../images/accountIcon.png" alt="icon du compte utilisateur">Mon compte</li>
+                <li><a href ="forum-list.html"><img class="groupomania__nav__menu__logo" src="../images/forumIcon.png" alt="icon forumr">Forum</a></li>
+                <li><a href ="forum-create.html"><img class="groupomania__nav__menu__logo" src="../images/createForumIcon.png" alt="icon créer forum">Créer un forum</a></li>
+                <li id="admin"><a href ="admin.html"><img class="groupomania__nav__menu__logo" src="../images/administrativeIcon.png" alt="icon modérateur">Administration</a></li>
+            </ul>   
+        </nav>
+        <main>
+            <aside class="groupomania__tools groupomania__tools--oneForum"> 
+                <section class="groupomania__tools__userInfos">
+                    <header class="groupomania__tools__title">
+                        <h2>L'auteur</h2>
+                    </header>
+                    <div class="groupomania__tools__userInfos__img">
+                        <img id="imageUrl" alt="icone photo utilisateur non trouvé"/>
+                        <span class="groupomania__tools__userInfos__author"></span>
+                    </div>
+                    <ul class="groupomania__tools__userInfos__infos">
+                        <li class="groupomania__tools__userInfos__infos--posts"></li>
+                        <li class="groupomania__tools__userInfos__infos--comments"></li>
+                        <li class="groupomania__tools__userInfos__infos--popularity"></li>
+                    </ul>
+                </section>
+                <section class="groupomania__tools__userInfos">
+                    <header class="groupomania__tools__title">
+                        <h2>Le forum</h2>
+                    </header>
+                    <ul class="groupomania__tools__userInfos__reactions">
+                        <li><i class="fas fa-comments"></i></li>
+                        <li><i class="far fa-thumbs-up"></i></li>
+                        <li><i class="far fa-thumbs-down"></i></li>
+                    </ul>
+                    <div class="groupomania__tools__userInfos__actionsButton">
+                        <button id="modify">Modifier</button>
+                        <button id="delete">Supprimer</button>
+                    </div>
+                    <div class="groupomania__tools__userInfos__actionsButton">
+                        <button id="come-back">Retour</button>
+                        <button id="Validate">Valider</button>
+                    </div>
+                </section>
+            </aside>
+            <div class="groupomania__views"> 
+                <section class="groupomania__views__forum">
+                    <p class="groupomania__views__error error"></p>
+                </section>
+                <div class="groupomania__views__comments">
+                    <section class="groupomania__views__comments__list">
+                        <header class="groupomania__views__title">
+                            <h3 id="title_comment">Commentaires</h3>
+                        </header>
+                        <p class="groupomania__views__error error"></p>
+                        <section class="groupomania__views__comments__list__content">
+                        </section>
+                    </section>
+                    <form class="groupomania__views__comments__form form-properties">-
+                        <label for="addComment">Ecrire un commentaire</label>
+                        <textarea id="addComment" name="addComment" placeholder="Saisissez le commentaire ici" required></textarea> 
+                    </form>
+                    <button id="submitComment">Envoyer</button>
+                </div>
+            </div>
+        </main>
+        <footer class="groupomania__footer">
+            <div>
+                <a class="groupomania__footer__link" href="mentions-legales.html">Mentions légales</a>
+                <a class="groupomania__footer__link" href="mailto:emploilaubron@hotmail.com">Contactez-nous</a>
+            </div>
+            <img class="groupomania__footer__logo" src="../images/logo.png" alt="logo de Groupomania">
+        </footer>
+    </body>
+</html>

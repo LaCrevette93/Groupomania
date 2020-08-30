@@ -8,5 +8,6 @@ const auth = require('../middleware/auth');
             //Routes for forum Express App
 router.get('/', auth, forumController.allForum);
 router.post('/search/', auth, forumController.allSearch);
+router.get('/:id', auth, forumController.oneForum);
 
 module.exports = router;

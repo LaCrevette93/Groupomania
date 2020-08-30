@@ -2,6 +2,8 @@
             //Error DOM element declaration
 errorView = document.getElementsByClassName("groupomania__views__content__error");
 
+controlSession();
+accesAdmin();
 clickToLogout();
 addUserInfos(JSON.parse(tempoData.getItem("user")).userId);    
 searchForum(); 
