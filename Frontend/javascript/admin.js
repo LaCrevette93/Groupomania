@@ -2,6 +2,9 @@
                     //Error element declaration
 errorView = document.getElementsByClassName("groupomania__views__content__error");
 
+controlSession();
+accesAdmin();
+
 sendRequest("GET", "http://localhost:3000/api/forum/admin/", null)
 .then(data => {
     addBlocsViews(data);

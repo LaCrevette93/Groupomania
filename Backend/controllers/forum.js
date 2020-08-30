@@ -209,3 +209,46 @@ exports.validateForum = (req, res, next) => {
         }
     });
 }
+
+                //Controller to modify the current forum CRUD (update forum)
+exports.modifyForum = (req, res, next) => {
+    connection.query('SELECT * FROM publication WHERE publication.id = '+ (req.params.id).split(":")[1], function (error, result)  {
+        if(error) {
+            res.status(500).json('Une erreur est survenue sur la BDD: ' + error);
+        } else {
+            if(result.length > 0 ) {
+                if (req.file) {
+                    fs.unlink(`medias/${result[0].media_path.split("medias/")[1]}`, () => {
+                        console.log("Le média a été supprimée!");
+                    });
+                } else {
+                    if ((req.body.pathMedia == "Pas de media") && (result[0].media_path != "Pas de media")) {
+                        fs.unlink(`medias/${result[0].media_path.split("medias/")[1]}`, () => {
+                            console.log("Le média a été supprimée!");
+                        });
+                    }
+                    req.body.pathMedia = result[0].media_path;
+                } 
+            }
+            if (!req.body.errorMessage) { 
+                let forum = {
+                    titre: req.body.titre,
+                    thematique: req.body.theme,
+                    description: req.body.description,
+                    type: req.body.type,
+                    media_path: req.body.pathMedia,
+                    fond_publication_path: req.body.fond_logo_path
+                }
+                connection.query('UPDATE publication SET ? WHERE publication.id = '+ (req.params.id).split(":")[1] , forum, (errUpdate, resultUpdate) =>  {
+                    if(errUpdate) {
+                        res.status(500).json('Une erreur est survenue sur la BDD: ' + errUpdate);
+                    } else {
+                        return res.status(200).json('Votre forum ' + forum.titre + ' a été modifié en base de donnée!');
+                    }
+                });
+            } else {
+                res.status(400).json(req.body.errorMessage);
+            }
+        }
+    });
+};

@@ -14,6 +14,7 @@ sendRequest("GET", "http://localhost:3000/api/forum/:"+param, null)
     controlView(dataForum);
     clickToDeleteForum(param);
     clickToValidate(param);
+    clickToModifyForum(param);
     ClickToForumList();
     sendRequest("GET", "http://localhost:3000/api/comment/:"+param, null)
     .then(dataComments => {
@@ -178,5 +179,13 @@ function clickToValidate(forumId) {
         .catch(error => {
             errorView[0].innerHTML = error;
         });
+    });
+}
+
+                    //Function to modify forum
+function clickToModifyForum(modifyId) {
+    document.getElementById("modify").addEventListener("click", function(event) {
+        event.preventDefault();
+        document.location.href = "forum-modify.html?id="+modifyId;
     });
 }
