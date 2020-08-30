@@ -12,6 +12,8 @@ sendRequest("GET", "http://localhost:3000/api/forum/:"+param, null)
     addUserInfos(dataForum);
     addInfoForum(dataForum);
     controlView(dataForum);
+    clickToDeleteForum(param);
+    clickToValidate(param);
     ClickToForumList();
     sendRequest("GET", "http://localhost:3000/api/comment/:"+param, null)
     .then(dataComments => {
@@ -152,12 +154,26 @@ function controlView(responseRequest) {
 }
 
                     //Function to delete the current forum
-function clickToDeleteForum(deleteId) {
+function clickToDeleteForum(forumId) {
     document.getElementById("delete").addEventListener("click", function(event) {
         event.preventDefault();
-        sendRequest("DELETE", "http://localhost:3000/api/forum/:"+ deleteId,null)
+        sendRequest("DELETE", "http://localhost:3000/api/forum/:"+ forumId,null)
         .then(data => {
             document.location.href = "forum-list.html";
+        })
+        .catch(error => {
+            errorView[0].innerHTML = error;
+        });
+    });
+}
+
+                    //Function to validate forum
+function clickToValidate(forumId) {
+    document.getElementById("Validate").addEventListener("click", function(event) {
+        event.preventDefault();
+        sendRequest("GET","http://localhost:3000/api/forum/admin/validate/:"+ forumId,null)
+        .then(data => {
+            document.location.href = "admin.html";
         })
         .catch(error => {
             errorView[0].innerHTML = error;

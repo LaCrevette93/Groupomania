@@ -3,7 +3,53 @@ var connection = mysql.createConnection({host:"localhost", user:"admin", passwor
 const {base64encode , base64decode} = require('nodejs-base64');
 const fs = require('fs');
 
-                //Controller to display forum CRUD (read forum)
+                //Controller to create a new forum CRUD (create forum)
+exports.createForum = (req,res,next) => {
+    var date = new Date();
+    if (!req.body.errorMessage) { 
+        connection.query('SELECT * FROM user WHERE id = '+ req.body.userId, function (err, result)  {
+            if(err) {
+                return res.status(500).json('Une erreur est survenue sur la BDD: ' + err);
+            } else {
+                if(result.length > 0 ) {
+                    let forum = {
+                        nom_Id: req.body.userId,
+                        auteur: result[0].nom +" "+result[0].prenom,
+                        titre: req.body.titre,
+                        thematique: req.body.theme,
+                        description: req.body.description,
+                        userId_positif_reaction: "No-likes",
+                        userId_negatif_reaction: "No-likes",
+                        nb_negatif_reaction: 0,
+                        nb_positif_reaction: 0,
+                        type: req.body.type,
+                        date_emission: date.getFullYear() + "\-" + (date.getMonth() + 1 ) + "\-" + date.getDate(),
+                        media_path: req.body.pathMedia,
+                        fond_publication_path: req.body.fond_logo_path
+                    }
+                    connection.query('INSERT INTO publication SET ? ', forum, (errCreation, resultCreation) =>  {
+                        if(errCreation) {
+                            return res.status(500).json('Une erreur est survenue sur la BDD: ' + errCreation);
+                        } else {
+                            connection.query('UPDATE user SET nb_publications = nb_publications +1 WHERE id='+req.body.userId , (errUpdateUser, resultUpdateUser) =>  {
+                                if(errUpdateUser) {
+                                    return res.status(500).json('Une erreur est survenue sur la BDD: ' + errUpdateUser);
+                                } else {
+                                    return res.status(200).json('Votre forum ' + forum.titre + ' a été ajouté en base de donnée!');
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+        });
+    }
+    else {
+        return res.status(400).json(req.body.errorMessage);
+    }
+};
+
+                //Controller to display forums with the statut ("check") CRUD (read forum)
 exports.allForum = (req,res,next) => {
     connection.query('SELECT * FROM publication WHERE statut = \'check\'', function (err, result, fields) {
         if(err) {
@@ -121,6 +167,45 @@ exports.deleteForum = (req, res, next) => {
                     }
                 });
             }
+        }
+    });
+}
+
+                //Controller to display all forum with the statut ("No-check") CRUD (read forum)
+exports.allValidateForum = (req,res,next) => {
+    connection.query('SELECT * FROM publication WHERE statut = \'no-check\'', function (err, result, fields) {
+        if(err) {
+            return res.status(500).json('Une erreur est survenue sur la BDD: ' + err );
+        } else {
+            if(result.length > 0) {
+               var forumTab = [];
+               let forum;
+               for (let i in result) {
+                    forum = {
+                        id: result[i].id,
+                        theme: result[i].thematique,
+                        title: result[i].titre,
+                        description: result[i].description,
+                        author: base64decode(result[i].auteur),
+                        background: result[i].fond_publication_path,
+                        date: result[i].date_emission.getDate() + "/" + (result[i].date_emission.getMonth() +1) + "/" + result[i].date_emission.getFullYear()
+                    }
+                    forumTab.push(forum);
+                }
+                return res.status(200).json(forumTab);
+            }
+            return res.status(200).json('Aucun forum dans la base de données!');
+        }
+    });
+};
+
+                //Controller to validate forum with the statut ("No-Check") CRUD (update forum)
+exports.validateForum = (req, res, next) => {
+    connection.query('UPDATE publication SET statut = \'check\' WHERE publication.id = '+ (req.params.id).split(":")[1], function (err, result)  {
+        if(err) {
+            res.status(500).json('Une erreur est survenue sur la BDD: ' + err);
+        } else {
+            return res.status(200).json('Le forum a été validé par les modérateurs!');
         }
     });
 }

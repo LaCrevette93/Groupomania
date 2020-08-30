@@ -74,8 +74,14 @@
         border-bottom-left-radius: 8px;
         background-color: rgba(174,174,174,0.7);
         color: rgb(9,31,67);
-        overflow-y: auto;
-        max-height: 690px;
+        &--consult {
+            overflow-y: auto;
+            max-height: 690px;
+        }
+        &--create {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
         &__title {
             size: 1.2em;
             text-align: left;

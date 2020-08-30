@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Groupomania - créer forum</title>
+    	<meta name="description" content="Création d'un forum dans le réseau social d'entreprise Groupomania">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    	<link rel="shortcut icon" type="image/png" href="../images/favicon.png">
+        <link rel="stylesheet" type="text/css" href="../styles/style.css">
+        <script src="../javascript/commun.js" defer></script>
+        <script src="../javascript/forum-create.js" defer></script>
+    </head>
+    <body class="groupomania">
+		<header class="groupomania__header">
+            <div class="groupomania__header__logo"> 
+                <img class="groupomania__header__logo__img" src="../images/logo.png" alt="logo de Groupomania">
+                <h1 class="groupomania__header__logo__title">Le réseau social d'entreprise</h1>      
+            </div>
+        </header>
+        <nav class="groupomania__nav">
+             <ul class="groupomania__nav__menu">
+                 <li><img class="groupomania__nav__menu__logo" src="../images/accountIcon.png" alt="icon du compte utilisateur">Mon compte</li>
+                 <li><a href ="forum-list.html"><img class="groupomania__nav__menu__logo" src="../images/forumIcon.png" alt="icon forumr">Forum</a></li>
+                 <li><a href ="forum-create.html"><img class="groupomania__nav__menu__logo" src="../images/createForumIcon.png" alt="icon créer forum">Créer un forum</a></li>
+                 <li id="admin"><a href ="admin.html"><img class="groupomania__nav__menu__logo" src="../images/administrativeIcon.png" alt="icon modérateur">Administration</a></li>
+            </ul>   
+        </nav>
+        <main>
+            <section class="groupomania__views groupomania__views--create">
+                <header class="groupomania__views__title">
+                    <h2>Création d'un forum</h2>
+                </header>
+                <form id="forumForm">
+                    <div class="groupomania__views__form">
+                        <p class="groupomania__views__form__error error"></p>
+                        <div class="form-properties">
+                            <label for="type">Type de publication</label>
+                            <select id="type" name="type" required>
+                                <option value = "">Choisissez</option>
+                                <option value="texte">Texte</option>
+                                <option value="image">Image</option>
+                                <option value="video">Video</option>
+                            </select>
+                        </div>
+                        <div class="form-properties">
+                            <label for="theme">Thématique</label>
+                            <select id="theme" name="theme" required>
+                                <option value = "">Choississez</option>
+                                <option value = "Animaux">Animaux</option>
+                                <option value = "Formation">Formation</option>
+                                <option value = "Emploi">Emploi</option>
+                                <option value = "Economie">Economie</option>
+                                <option value = "Evenements">Evenements</option>
+                                <option value = "Immobilier">Immobilier</option>
+                                <option value = "Services">Services</option>
+                                <option value = "Rencontres">Rencontres</option>
+                                <option value = "Loisirs">Loisirs</option>
+                                <option value = "Environnement">Environnement</option>
+                                <option value = "Politique">Politique</option>
+                                <option value = "Actualité">Actualité</option>
+                            </select>
+                        </div>
+                        <div class="form-properties">
+                            <label for="titre">Titre</label>
+                            <input id="titre" name="titre" placeholder="Titre du post" required />
+                        </div>
+                        <div class="form-properties">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" placeholder="Renseignez la description ici" required></textarea> 
+                        </div>
+                        <div class="fileform-properties">
+                            <input id="inputFile" type="file" name="userFile">
+                        </div>   
+                    </div>
+                </form>
+                <button id="submit">Charger</button>
+            </section>
+        </main>
+        <footer class="groupomania__footer">
+            <div>
+                <a class="groupomania__footer__link" href="mentions-legales.html">Mentions légales</a>
+                <a class="groupomania__footer__link" href="mailto:emploilaubron@hotmail.com">Contactez-nous</a>
+            </div>
+            <img class="groupomania__footer__logo" src="../images/logo.png" alt="logo de Groupomania">
+        </footer>
+    </body>
+</html>
+
+
