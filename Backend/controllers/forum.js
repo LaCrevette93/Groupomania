@@ -1,8 +1,9 @@
 const mysql = require('mysql');
 var connection = mysql.createConnection({host:"localhost", user:"admin", password:"gl45@group", database: "groupomania"});
 const {base64encode , base64decode} = require('nodejs-base64');
+const fs = require('fs');
 
-                //Controller for display forum CRUD (read forum)
+                //Controller to display forum CRUD (read forum)
 exports.allForum = (req,res,next) => {
     connection.query('SELECT * FROM publication WHERE statut = \'check\'', function (err, result, fields) {
         if(err) {
@@ -30,7 +31,7 @@ exports.allForum = (req,res,next) => {
     });
 };
 
-                //Controller for display all forums according data in the search form CRUD (read forum)
+                //Controller to display all forums according data in the search form CRUD (read forum)
 exports.allSearch = (req,res,next) => {
     const sqlRequest = req.body.sqlSearch+base64encode(req.body.sqlAuthor)+req.body.sqlSearch2;
     connection.query(sqlRequest, function (err, result, fields) {
@@ -59,7 +60,7 @@ exports.allSearch = (req,res,next) => {
     });
 };
 
-                //Controller for display pne forum selected by user in forum-list page CRUD (read forum)
+                //Controller to display forum selected by user in forum-list page CRUD (read forum)
 exports.oneForum = (req, res, next) => {
     connection.query('SELECT * FROM publication INNER JOIN user ON publication.nom_id = user.id WHERE publication.id = '+ (req.params.id).split(":")[1], function (err, result)  {
         if(err) {
@@ -98,3 +99,28 @@ exports.oneForum = (req, res, next) => {
         }
     });
 };
+
+                //Controller to delete the current forum  CRUD (delete forum)
+exports.deleteForum = (req, res, next) => {
+    connection.query('SELECT * FROM publication WHERE publication.id = '+ (req.params.id).split(":")[1], function (err, result)  {
+        if(err) {
+            res.status(500).json('Une erreur est survenue sur la BDD: ' + err);
+        } else {
+            if(result.length > 0 ) {
+                var deleteMediaPath;
+                if (deleteMediaPath != "Pas de media") {
+                    deleteMediaPath = result[0].media_path.split("medias/")[1];
+                } 
+                connection.query('DELETE FROM publication WHERE publication.id = '+ (req.params.id).split(":")[1], function (deleteError, deleteResult)  {
+                    if(deleteError) {
+                        res.status(500).json('Une erreur est survenue sur la BDD: ' + deleteError);
+                    } else {
+                        fs.unlink(`medias/${deleteMediaPath}`, () => {
+                            return res.status(200).json("La publication a été supprimée!");
+                        });
+                    }
+                });
+            }
+        }
+    });
+}

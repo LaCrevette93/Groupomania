@@ -139,6 +139,7 @@ function clickToAddComment() {
         });
     });
 }
+
                     //Function to control access for update data
 function controlView(responseRequest) {
     if ((responseRequest.userId != JSON.parse(tempoData.getItem("user")).userId)) {
@@ -148,4 +149,18 @@ function controlView(responseRequest) {
     if((JSON.parse(tempoData.getItem("user")).role) == "user") {
         document.getElementById("Validate").disabled = true;
     }
+}
+
+                    //Function to delete the current forum
+function clickToDeleteForum(deleteId) {
+    document.getElementById("delete").addEventListener("click", function(event) {
+        event.preventDefault();
+        sendRequest("DELETE", "http://localhost:3000/api/forum/:"+ deleteId,null)
+        .then(data => {
+            document.location.href = "forum-list.html";
+        })
+        .catch(error => {
+            errorView[0].innerHTML = error;
+        });
+    });
 }
