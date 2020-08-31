@@ -4,7 +4,7 @@ var connection = mysql.createConnection({host:"localhost", user:"admin", passwor
 
                          //Controller for display all comments for the selected forum CRUD (read comment)
 exports.allComment = (req,res,next) => {
-    connection.query('SELECT * FROM commentaire WHERE publication_id = '+ (req.params.id).split(":")[1], function (err, result, fields) {
+    connection.query('SELECT * FROM commentaires WHERE publication_id = '+ (req.params.id).split(":")[1], function (err, result, fields) {
         if(err) {
             return res.status(500).json('Une erreur est survenue sur la BDD: ' + err );
         } else {
@@ -36,7 +36,7 @@ exports.createComment = (req,res,next) => {
         date: date.getFullYear() + "\-" + (date.getMonth() + 1 ) + "\-" + date.getDate(),
         publication_id: req.body.publication_id
     }    
-    connection.query('INSERT INTO commentaire SET ? ', comment, (errComment, resultComment) =>  {
+    connection.query('INSERT INTO commentaires SET ? ', comment, (errComment, resultComment) =>  {
         if(errComment) {
             return res.status(500).json('Une erreur est survenue sur la BDD: ' + errComment);
         } else {

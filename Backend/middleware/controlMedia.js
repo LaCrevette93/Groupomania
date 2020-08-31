@@ -23,8 +23,8 @@ module.exports = (req,res,next) => {
                 bool = false;
             break;
             case "video":
-                if (extension!="mov" && extension!="avi" && extension!="mp4" && extension!="flv" && extension!="wmv") {
-                    req.body.errorMessage = "Seul les formats mov, avi, mp4, flv et wmv sont acceptés";
+                if (extension!="mp4") {
+                    req.body.errorMessage = "Seul le format mp4 est accepté";
                     bool = false;
                 } else {
                     req.body.pathMedia = `${req.protocol}://${req.get('host')}/medias/${req.file.filename}`;

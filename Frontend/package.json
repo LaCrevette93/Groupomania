@@ -9,6 +9,9 @@
   "author": "Gaetan LAUBRON",
   "license": "ISC",
   "dependencies": {
-    "sass": "^1.26.10"
+    "http": "0.0.1-security",
+    "http-server": "^0.12.3",
+    "sass": "^1.26.10",
+    "server": "^1.0.30"
   }
 }

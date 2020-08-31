@@ -60,11 +60,11 @@ function insertMedia(responseRequest,contentTab) {
     let media_type = responseRequest.type;
     switch (media_type) {
         case "video":
-            contentTab[1][3] = "<video title=\"media\" preload=\"auto\" autoplay controls source src="+
+            contentTab[1][3] = "<video title=\"Merci de recharger la vidéo via la page modification si le chargement ne s'effectue pas\" preload=\"auto\" autoplay controls source src="+
             responseRequest.pathMedia+"></video>";
         break;
         case "image":
-            contentTab[1][3] = "<img src="+responseRequest.pathMedia+" alt=\"media du forum\">";
+            contentTab[1][3] = "<img src="+responseRequest.pathMedia+" alt=\"Merci de recharger le média via la page modification.\">";
         break;
         default:
             console.log("Aucun media à ajouter!");
@@ -152,8 +152,10 @@ function controlView(responseRequest) {
         document.getElementById("delete").disabled = true;
         document.getElementById("modify").disabled = true;
     }
-    if((JSON.parse(tempoData.getItem("user")).role) == "user") {
-        document.getElementById("Validate").disabled = true;
+    if((JSON.parse(tempoData.getItem("user")).role) != "user") {
+        document.getElementById("Validate").disabled = false;
+        document.getElementById("delete").disabled = false;
+        document.getElementById("modify").disabled = false;
     }
 }
 

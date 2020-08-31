@@ -83,7 +83,7 @@ exports.oneUser = (req, res, next) => {
                 let userInfos = {
                     nb_publications: result[0].nb_publications,
                     nb_commentaires: result[0].nb_commentaires,
-                    popularity: result[0].popularité,
+                    popularity: result[0].popularite,
                     author: author,
                     profil_path: result[0].imageUrl
                 }

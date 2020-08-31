@@ -113,7 +113,7 @@ exports.oneForum = (req, res, next) => {
             res.status(500).json('Une erreur est survenue sur la BDD: ' + err);
         } else {
             if(result.length > 0 ) {
-                connection.query('SELECT * FROM commentaire WHERE publication_id = '+ (req.params.id).split(":")[1], function (errComments, resultComments)  {
+                connection.query('SELECT * FROM commentaires WHERE publication_id = '+ (req.params.id).split(":")[1], function (errComments, resultComments)  {
                     if(errComments) {
                         res.status(500).json('Une erreur est survenue sur la BDD: ' + errComments);
                     } else {
@@ -133,7 +133,7 @@ exports.oneForum = (req, res, next) => {
                             nb_publications: result[0].nb_publications,
                             nb_comments: result[0].nb_commentaires,
                             nb_commentsForum: resultComments.length,
-                            popularity: result[0].popularité
+                            popularity: result[0].popularite
                         }
                         return res.status(200).json(forum);
                     }

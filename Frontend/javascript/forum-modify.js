@@ -44,7 +44,7 @@ function sendmodifyData() {
             if(request.status != 200 && request.status != 201) {
                 errorView[0].innerHTML = request.response;
             } else {
-               // document.location.href = "forum-list.html";
+               document.location.href = "forum-list.html";
             }
         }
         request.send(formData);

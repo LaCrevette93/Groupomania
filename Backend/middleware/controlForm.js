@@ -5,7 +5,7 @@ module.exports = (req,res,next) => {
     let bool = true;
     const expRegex = {
         titre: "^[^\\s][a-zA-Zéèàêûçàôë\\s-]{2,40}$",
-        description: "^[^\\s][a-zA-Zéèàêûçàôëî.':,!\\s\\d-]{10,1000}$"
+        description: "^[^\\s][a-zA-Zéèàêûçàôëî()?\".':,!\\s\\d-]{10,1000}$"
     };
     for (let i in expRegex) {
         const pattern = new RegExp(expRegex[i]);
